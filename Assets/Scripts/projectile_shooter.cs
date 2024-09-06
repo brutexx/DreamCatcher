@@ -6,20 +6,20 @@ using UnityEngine;
 
 public class ProjectileShooter : MonoBehaviour
 {
-    public GameObject projectilePrefab; // O prefab do projétil
-    public Transform shootPoint; // O ponto de onde o projétil será disparado
+    public GameObject projectilePrefab; // O prefab do projï¿½til
+    public Transform shootPoint; // O ponto de onde o projï¿½til serï¿½ disparado
     public List<ProjectileConfig> shooterProperties = new List<ProjectileConfig>(); // Lista de propriedades
-    private int indexer = 0; // Índice para selecionar as propriedades
+    private int indexer = 0; // ï¿½ndice para selecionar as propriedades
 
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetButtonDown("Fire1")) // Padrão para botão esquerdo do mouse
+        if (Input.GetButtonDown("Fire1")) // Padrï¿½o para botï¿½o esquerdo do mouse
         {
             ShootProjectile();
         }
 
-        // Exemplo de como alterar o índice (você pode implementar isso de acordo com a lógica do seu jogo)
+        // Exemplo de como alterar o ï¿½ndice (vocï¿½ pode implementar isso de acordo com a lï¿½gica do seu jogo)
         if (Input.GetKeyDown(KeyCode.L))
         {
             indexer = (indexer + 1) % shooterProperties.Count;
@@ -32,13 +32,13 @@ public class ProjectileShooter : MonoBehaviour
 
     void ShootProjectile()
     {
-        // Instancia o projétil no ponto de disparo com a mesma rotação do personagem
+        // Instancia o projï¿½til no ponto de disparo com a mesma rotaï¿½ï¿½o do personagem
         GameObject projectile = Instantiate(projectilePrefab, shootPoint.position, shootPoint.rotation);
 
-        // Obtém o componente ProjectileProperties do projétil instanciado
+        // Obtï¿½m o componente ProjectileProperties do projï¿½til instanciado
         ProjectileProperties projectileProperties = projectile.GetComponent<ProjectileProperties>();
 
-        // Aplica as propriedades do array de acordo com o índice atual
+        // Aplica as propriedades do array de acordo com o ï¿½ndice atual
         if (projectileProperties != null && shooterProperties.Count > 0)
         {
             ApplyProperties(projectileProperties, shooterProperties[indexer]);
@@ -59,6 +59,7 @@ public class ProjectileShooter : MonoBehaviour
         target.fireDuration = source.fireDuration;
         target.firstProperty = source.firstProperty;
         target.delay = source.delay;
+        target.aoe = source.aoe;
         target.ChangeLight();
     }
 }

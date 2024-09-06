@@ -65,13 +65,13 @@ public class projectileSettings : MonoBehaviour
         ProjectileShooter aux = player.GetComponent<ProjectileShooter>();
         if (aux != null)
         {
-            // Cria uma cópia das configurações atuais
+            // Cria uma cï¿½pia das configuraï¿½ï¿½es atuais
             ProjectileConfig copiedSettings = CreateCopy();
 
-            // Adiciona a cópia às propriedades do atirador
+            // Adiciona a cï¿½pia ï¿½s propriedades do atirador
             aux.shooterProperties.Add(copiedSettings);
 
-            // Reinicia os parâmetros para os valores padrão
+            // Reinicia os parï¿½metros para os valores padrï¿½o
             ResetToDefault();
         }
     }
@@ -91,7 +91,8 @@ public class projectileSettings : MonoBehaviour
             fireDamage = this.fireDamage,
             fireDuration = this.fireDuration,
             firstProperty = this.firstProperty,
-            delay = this.delay
+            delay = this.delay,
+            aoe = this.aoe
         };
         return copy;
     }
@@ -110,6 +111,7 @@ public class projectileSettings : MonoBehaviour
         fireDuration = 3f;
         firstProperty = 0;
         delay = 0.5f;
+        aoe = false;
     }
 }
 

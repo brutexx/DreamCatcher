@@ -13,8 +13,9 @@ public class ProjectileConfig
     public float fireDuration = 3f;
     public int firstProperty = 0;
     public float delay = 0.5f;
+    public bool aoe = false;
 
-    // Construtor para criar uma cópia de uma configuração existente
+    // Construtor para criar uma cï¿½pia de uma configuraï¿½ï¿½o existente
     public ProjectileConfig(ProjectileConfig config)
     {
         this.projectileSpeed = config.projectileSpeed;
@@ -25,8 +26,9 @@ public class ProjectileConfig
         this.iceDuration = config.iceDuration;
         this.fireDamage = config.fireDamage;
         this.fireDuration = config.fireDuration;
+        this.aoe = config.aoe;
     }
 
-    // Construtor vazio para criar uma configuração do zero
+    // Construtor vazio para criar uma configuraï¿½ï¿½o do zero
     public ProjectileConfig() { }
 }

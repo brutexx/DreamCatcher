@@ -35,7 +35,7 @@ public class AOEProjectile : MonoBehaviour
 
     private void Update()
     {
-        
+
     }
 
 
@@ -75,7 +75,7 @@ public class AOEProjectile : MonoBehaviour
         for (int i = 0; i < numExplosoes; i++)
         {
             Collider[] colliders = Physics.OverlapSphere(transform.position, radius);
-            Debug.Log(i);
+            //Debug.Log(i);
 
             foreach (Collider nearbyObject in colliders)
             {
@@ -97,7 +97,7 @@ public class AOEProjectile : MonoBehaviour
                     }
                 }
             }
-            Debug.Log(i);
+            //Debug.Log(i);
             yield return new WaitForSeconds(1);
         }
         Destroy(particles);
