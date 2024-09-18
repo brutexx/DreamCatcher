@@ -2218,9 +2218,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 2349659197117169218, guid: d6db0a509b290eb4894ca0c3fe957d7d, type: 3}
-        m_TargetAssemblyTypeName: ProjectileProperties, Assembly-CSharp
-        m_MethodName: ToogleIceEffect
+      - m_Target: {fileID: 862116785}
+        m_TargetAssemblyTypeName: projectileSettings, Assembly-CSharp
+        m_MethodName: ToggleIceEffect
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -2297,7 +2297,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 190695585138877083, guid: c4371522a097be64eaac20b89e9d7f24, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 11.650452
+      value: 12.321045
       objectReference: {fileID: 0}
     - target: {fileID: 190695585138877083, guid: c4371522a097be64eaac20b89e9d7f24, type: 3}
       propertyPath: m_LocalPosition.y
@@ -2305,7 +2305,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 190695585138877083, guid: c4371522a097be64eaac20b89e9d7f24, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -5.057251
+      value: -5.0512085
       objectReference: {fileID: 0}
     - target: {fileID: 190695585138877083, guid: c4371522a097be64eaac20b89e9d7f24, type: 3}
       propertyPath: m_LocalRotation.w
@@ -4179,9 +4179,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 2349659197117169218, guid: d6db0a509b290eb4894ca0c3fe957d7d, type: 3}
-        m_TargetAssemblyTypeName: ProjectileProperties, Assembly-CSharp
-        m_MethodName: ToogleIceEffect
+      - m_Target: {fileID: 862116785}
+        m_TargetAssemblyTypeName: projectileSettings, Assembly-CSharp
+        m_MethodName: ToggleIceEffect
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -4620,6 +4620,7 @@ GameObject:
   - component: {fileID: 437275886}
   - component: {fileID: 437275885}
   - component: {fileID: 437275884}
+  - component: {fileID: 437275887}
   m_Layer: 0
   m_Name: Third Person Player
   m_TagString: Player
@@ -4732,6 +4733,20 @@ MonoBehaviour:
   m_DefaultActionMap: Player
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 1556206809}
+--- !u!114 &437275887
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 437275880}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a096878dff1e76747b61db3946001987, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  vidaMaxima: 100
+  vidaAtual: 0
 --- !u!1 &441669333
 GameObject:
   m_ObjectHideFlags: 0
@@ -5734,8 +5749,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 2349659197117169218, guid: d6db0a509b290eb4894ca0c3fe957d7d, type: 3}
-        m_TargetAssemblyTypeName: ProjectileProperties, Assembly-CSharp
+      - m_Target: {fileID: 862116785}
+        m_TargetAssemblyTypeName: projectileSettings, Assembly-CSharp
         m_MethodName: DamageDown
         m_Mode: 1
         m_Arguments:
@@ -8508,8 +8523,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 2349659197117169218, guid: d6db0a509b290eb4894ca0c3fe957d7d, type: 3}
-        m_TargetAssemblyTypeName: ProjectileProperties, Assembly-CSharp
+      - m_Target: {fileID: 862116785}
+        m_TargetAssemblyTypeName: projectileSettings, Assembly-CSharp
         m_MethodName: DamageUp
         m_Mode: 1
         m_Arguments:
@@ -8927,6 +8942,7 @@ MonoBehaviour:
   projectileSpeed: 20
   projectileDamage: 5
   aoe: 0
+  self: 0
   fireEffect: 0
   iceEffect: 0
   heals: 0
@@ -11112,9 +11128,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 2349659197117169218, guid: d6db0a509b290eb4894ca0c3fe957d7d, type: 3}
-        m_TargetAssemblyTypeName: ProjectileProperties, Assembly-CSharp
-        m_MethodName: ToogleFireEffect
+      - m_Target: {fileID: 862116785}
+        m_TargetAssemblyTypeName: projectileSettings, Assembly-CSharp
+        m_MethodName: ToggleFireEffect
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -14259,9 +14275,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 2349659197117169218, guid: d6db0a509b290eb4894ca0c3fe957d7d, type: 3}
-        m_TargetAssemblyTypeName: ProjectileProperties, Assembly-CSharp
-        m_MethodName: ToogleFireEffect
+      - m_Target: {fileID: 862116785}
+        m_TargetAssemblyTypeName: projectileSettings, Assembly-CSharp
+        m_MethodName: ToggleFireEffect
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -14546,7 +14562,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 190695585138877083, guid: c4371522a097be64eaac20b89e9d7f24, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 11.527161
+      value: 12.142273
       objectReference: {fileID: 0}
     - target: {fileID: 190695585138877083, guid: c4371522a097be64eaac20b89e9d7f24, type: 3}
       propertyPath: m_LocalPosition.y
@@ -14554,7 +14570,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 190695585138877083, guid: c4371522a097be64eaac20b89e9d7f24, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -3.689331
+      value: -3.6837158
       objectReference: {fileID: 0}
     - target: {fileID: 190695585138877083, guid: c4371522a097be64eaac20b89e9d7f24, type: 3}
       propertyPath: m_LocalRotation.w
@@ -15044,8 +15060,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 2349659197117169218, guid: d6db0a509b290eb4894ca0c3fe957d7d, type: 3}
-        m_TargetAssemblyTypeName: ProjectileProperties, Assembly-CSharp
+      - m_Target: {fileID: 862116785}
+        m_TargetAssemblyTypeName: projectileSettings, Assembly-CSharp
         m_MethodName: DamageUp
         m_Mode: 1
         m_Arguments:
@@ -15579,7 +15595,7 @@ Transform:
   m_GameObject: {fileID: 1556206805}
   serializedVersion: 2
   m_LocalRotation: {x: 0.15789793, y: -0.0044809147, z: 0.000716523, w: 0.98744506}
-  m_LocalPosition: {x: 11.650452, y: 4.42099, z: -5.057251}
+  m_LocalPosition: {x: 12.321045, y: 4.42099, z: -5.0512085}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -15939,6 +15955,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 862116785}
+        m_TargetAssemblyTypeName: projectileSettings, Assembly-CSharp
+        m_MethodName: CreateSettings
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1616920741
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -16063,6 +16091,18 @@ MonoBehaviour:
       - m_Target: {fileID: 481307198}
         m_TargetAssemblyTypeName: PainelControleer, Assembly-CSharp
         m_MethodName: ShowSelf
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 862116785}
+        m_TargetAssemblyTypeName: projectileSettings, Assembly-CSharp
+        m_MethodName: ToggleSelf
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -18721,8 +18761,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 2349659197117169218, guid: d6db0a509b290eb4894ca0c3fe957d7d, type: 3}
-        m_TargetAssemblyTypeName: ProjectileProperties, Assembly-CSharp
+      - m_Target: {fileID: 862116785}
+        m_TargetAssemblyTypeName: projectileSettings, Assembly-CSharp
         m_MethodName: DamageDown
         m_Mode: 1
         m_Arguments:
@@ -18857,6 +18897,18 @@ MonoBehaviour:
       - m_Target: {fileID: 493555386}
         m_TargetAssemblyTypeName: LevelManager, Assembly-CSharp
         m_MethodName: LevelOn
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 862116785}
+        m_TargetAssemblyTypeName: projectileSettings, Assembly-CSharp
+        m_MethodName: CreateSettings
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

@@ -7,6 +7,7 @@ public class projectileSettings : MonoBehaviour
     public float projectileSpeed = 20f;
     public float projectileDamage = 5f;
     public bool aoe = false;
+    public bool self = false;
     public bool fireEffect = false;
     public bool iceEffect = false;
     public bool heals = false;
@@ -60,6 +61,11 @@ public class projectileSettings : MonoBehaviour
         aoe = !aoe;
     }
 
+    public void ToggleSelf()
+    {
+        self = !self;
+    }
+
     public void CreateSettings()
     {
         ProjectileShooter aux = player.GetComponent<ProjectileShooter>();
@@ -92,7 +98,8 @@ public class projectileSettings : MonoBehaviour
             fireDuration = this.fireDuration,
             firstProperty = this.firstProperty,
             delay = this.delay,
-            aoe = this.aoe
+            aoe = this.aoe,
+            self = this.self
         };
         return copy;
     }
@@ -112,6 +119,7 @@ public class projectileSettings : MonoBehaviour
         firstProperty = 0;
         delay = 0.5f;
         aoe = false;
+        self = false;
     }
 }
 

@@ -16,6 +16,7 @@ public class ProjectileProperties : MonoBehaviour
     public bool lightEffect = false;
     public Light light;
     public bool aoe = false;
+    public bool self = false;
 
     // Por mim isso seria fixo e talvez uma classe pra cada? Pra nao ter que ficar fazendo todos assim
     public float slow = 0.2f;
@@ -67,6 +68,25 @@ public class ProjectileProperties : MonoBehaviour
 
     void OnTriggerEnter(Collider other)
     {
+        if (self && other.CompareTag("Player"))
+        {
+            VidaPlayer vidaPlayer = other.GetComponent<VidaPlayer>();
+            if (vidaPlayer != null)
+            {
+                vidaPlayer.TomarDano(projectileDamage);
+
+                if (iceEffect)
+                {
+                    vidaPlayer.AplicarLentidao(slow, iceDuration);
+                }
+
+                if (fireEffect)
+                {
+                    vidaPlayer.AplicarDanoAoLongoDoTempo(fireDamage, fireDuration);
+                }
+            }
+            Destroy(gameObject);
+        }
         if (!aoe && other.CompareTag("Enemy"))
         {
             VidaInimigo vidaInimigo = other.GetComponent<VidaInimigo>();
@@ -123,44 +143,4 @@ public class ProjectileProperties : MonoBehaviour
         target.duracao = duracao;
     }
 
-    //private IEnumerator AplicarAoeCoroutine(float duracao)
-    //{
-    //    float intervalo = 1f; // Intervalo de tempo entre cada aplica��o de dano
-    //    int numExplosoes = Mathf.FloorToInt(duracao / intervalo); // Quantidade de vezes que o dano ser� aplicado
-
-    //    for (int i = 0; i < numExplosoes; i++)
-    //    {
-    //        Collider[] colliders = Physics.OverlapSphere(transform.position, radius);
-    //        Debug.Log(i);
-
-    //        foreach (Collider nearbyObject in colliders)
-    //        {
-    //            // Verifica se o objeto tem o script de vida do inimigo
-    //            VidaInimigo vidaInimigo = nearbyObject.GetComponent<VidaInimigo>();
-    //            if (vidaInimigo != null)
-    //            {
-    //                vidaInimigo.TomarDano(projectileDamage);
-
-    //                if (iceEffect)
-    //                {
-    //                    vidaInimigo.AplicarLentidao(slow, iceDuration);
-    //                }
-
-    //                if (fireEffect)
-    //                {
-    //                    vidaInimigo.AplicarDanoAoLongoDoTempo(fireDamage, fireDuration);
-    //                }
-    //            }
-    //        }
-    //        Debug.Log(i);
-    //        yield return new WaitForSeconds(1);
-    //    }
-    //}
-
-    //void OnDrawGizmosSelected()
-    //{
-    //    // Desenha uma esfera no editor para visualizar o raio de dano
-    //    Gizmos.color = Color.red;
-    //    Gizmos.DrawWireSphere(transform.position, radius);
-    //}
 }

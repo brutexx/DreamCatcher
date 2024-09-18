@@ -60,6 +60,7 @@ public class ProjectileShooter : MonoBehaviour
         target.firstProperty = source.firstProperty;
         target.delay = source.delay;
         target.aoe = source.aoe;
+        target.self = source.self;
         target.ChangeLight();
     }
 }
