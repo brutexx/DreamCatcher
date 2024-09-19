@@ -7,9 +7,7 @@ public class VidaPlayer : MonoBehaviour
     public float vidaMaxima = 100f;
     public float vidaAtual;
     private float velocidadeOriginal;
-
-
-    private bool slow = false;
+    public float shield = 0f;
 
     private float reducaoVelocidadeAtual = 0f;
 
@@ -23,12 +21,37 @@ public class VidaPlayer : MonoBehaviour
 
     public void TomarDano(float dano)
     {
+        if (shield > 0)
+        {
+            float danoAux = dano - shield;
+            shield -= dano;
+            if (shield < 0)
+                shield = 0;
+            if (danoAux < 0)
+                dano = 0;
+            else
+                dano -= danoAux;
+        }
         vidaAtual -= dano;
 
         if (vidaAtual <= 0)
         {
             Morrer();
         }
+
+    }
+
+    public void GanharShield(float shieldGanho)
+    {
+        shield += shieldGanho;
+    }
+
+    public void GanharVida(float vida)
+    {
+        vidaAtual += vida;
+
+        if (vidaAtual > vidaMaxima)
+            vidaAtual = vidaMaxima;
     }
 
     void Morrer()

@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Enemy
   - Air
+  - safeArea
   layers:
   - Default
   - TransparentFX
