@@ -6,7 +6,7 @@ using UnityEngine;
 public class ProjectileProperties : MonoBehaviour
 {
     public Rigidbody rb;
-    public float projectileSpeed = 20f; // A velocidade do proj�til
+    // "speed" está em BulletController.
     public float projectileDamage = 5f;
     //Esse delay seria pra quando tempo demoraria pra arma artirar
     public float delay = 0.5f;
@@ -42,16 +42,7 @@ public class ProjectileProperties : MonoBehaviour
     void Start()
     {
         rb = gameObject.GetComponent<Rigidbody>();
-        rb.velocity = transform.forward * projectileSpeed;
         initDist = gameObject.transform.position.x;
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        if (Mathf.Abs(initDist - gameObject.transform.position.x) > 75) {
-            Destroy(gameObject);
-        }
     }
 
 

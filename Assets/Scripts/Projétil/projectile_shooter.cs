@@ -47,7 +47,8 @@ public class ProjectileShooter : MonoBehaviour
 
     void ApplyProperties(ProjectileProperties target, ProjectileConfig source)
     {
-        target.projectileSpeed = source.projectileSpeed;
+        // Por enquanto "Speed" não está em ProjectileProperties, e sim em BulletController.
+        //target.projectileSpeed = source.projectileSpeed;
         target.projectileDamage = source.projectileDamage;
         target.fireEffect = source.fireEffect;
         target.iceEffect = source.iceEffect;

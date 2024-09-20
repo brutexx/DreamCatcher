@@ -15,8 +15,9 @@ GameObject:
   - component: {fileID: 3569771465299315105}
   - component: {fileID: 2867835560963819920}
   - component: {fileID: 2349659197117169218}
+  - component: {fileID: 7319332399971799015}
   m_Layer: 0
-  m_Name: Tiro
+  m_Name: Bullet
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -31,8 +32,8 @@ Transform:
   m_GameObject: {fileID: 352885487485044401}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 23.043627, y: 0.4253, z: 26.8118}
-  m_LocalScale: {x: 0.3431335, y: 0.3431335, z: 0.3431335}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 0.1, y: 0.1, z: 0.1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -216,9 +217,13 @@ MonoBehaviour:
   fireEffect: 0
   iceEffect: 0
   heals: 0
+  shields: 0
+  healAmount: 5
+  shieldAmount: 5
   lightEffect: 0
   light: {fileID: 0}
   aoe: 0
+  self: 0
   slow: 0.2
   iceDuration: 3
   fireDamage: 0.2
@@ -227,3 +232,16 @@ MonoBehaviour:
   duracao: 3
   radius: 5
   aoeAreaPrefab: {fileID: 9006251315264432247, guid: 51f5f2a7233a77045a2bfd6cd11343f6, type: 3}
+--- !u!114 &7319332399971799015
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 352885487485044401}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: afbc74ef3f41bc6429d03aca473963c8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bulletDecal: {fileID: 2349998639827528034, guid: 2f36109669703f1459a86d823c98bb11, type: 3}
