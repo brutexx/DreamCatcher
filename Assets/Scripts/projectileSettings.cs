@@ -11,6 +11,9 @@ public class projectileSettings : MonoBehaviour
     public bool fireEffect = false;
     public bool iceEffect = false;
     public bool heals = false;
+    public bool shields = false;
+    public float healAmount = 5f;
+    public float shieldAmount = 5f;
     public bool lightEffect = false;
     public float slow = 0.2f;
     public float iceDuration = 3f;
@@ -66,6 +69,20 @@ public class projectileSettings : MonoBehaviour
         self = !self;
     }
 
+    public void ToggleHeals()
+    {
+        heals = true;
+        healAmount *= 2;
+        delay *= 2;
+    }
+
+    public void ToggleShields()
+    {
+        shields = true;
+        shieldAmount *= 2;
+        delay *= 2;
+    }
+
     public void CreateSettings()
     {
         ProjectileShooter aux = player.GetComponent<ProjectileShooter>();
@@ -91,6 +108,7 @@ public class projectileSettings : MonoBehaviour
             fireEffect = this.fireEffect,
             iceEffect = this.iceEffect,
             heals = this.heals,
+            shields = this.shields,
             slow = this.slow,
             lightEffect = this.lightEffect,
             iceDuration = this.iceDuration,
@@ -99,7 +117,9 @@ public class projectileSettings : MonoBehaviour
             firstProperty = this.firstProperty,
             delay = this.delay,
             aoe = this.aoe,
-            self = this.self
+            self = this.self,
+            healAmount = this.healAmount,
+            shieldAmount = this.shieldAmount,
         };
         return copy;
     }
@@ -111,6 +131,7 @@ public class projectileSettings : MonoBehaviour
         fireEffect = false;
         iceEffect = false;
         heals = false;
+        shields = false;
         lightEffect = false;
         slow = 0.2f;
         iceDuration = 3f;
@@ -120,6 +141,8 @@ public class projectileSettings : MonoBehaviour
         delay = 0.5f;
         aoe = false;
         self = false;
+        healAmount = 5f;
+        shieldAmount = 5f;
     }
 }
 

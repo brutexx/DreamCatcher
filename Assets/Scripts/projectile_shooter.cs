@@ -52,6 +52,7 @@ public class ProjectileShooter : MonoBehaviour
         target.fireEffect = source.fireEffect;
         target.iceEffect = source.iceEffect;
         target.heals = source.heals;
+        target.shields = source.shields;
         target.slow = source.slow;
         target.lightEffect = source.lightEffect;
         target.iceDuration = source.iceDuration;
@@ -61,6 +62,8 @@ public class ProjectileShooter : MonoBehaviour
         target.delay = source.delay;
         target.aoe = source.aoe;
         target.self = source.self;
+        target.healAmount = source.healAmount;
+        target.shieldAmount = source.shieldAmount;
         target.ChangeLight();
     }
 }

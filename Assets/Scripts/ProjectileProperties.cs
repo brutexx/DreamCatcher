@@ -13,6 +13,9 @@ public class ProjectileProperties : MonoBehaviour
     public bool fireEffect = false;
     public bool iceEffect = false;
     public bool heals = false;
+    public bool shields = false;
+    public float healAmount = 5f;
+    public float shieldAmount = 5f;
     public bool lightEffect = false;
     public Light light;
     public bool aoe = false;
@@ -73,7 +76,12 @@ public class ProjectileProperties : MonoBehaviour
             VidaPlayer vidaPlayer = other.GetComponent<VidaPlayer>();
             if (vidaPlayer != null)
             {
-                vidaPlayer.TomarDano(projectileDamage);
+                if(!heals && !shields)
+                    vidaPlayer.TomarDano(projectileDamage);
+                if(heals)
+                    vidaPlayer.GanharVida(healAmount);
+                if (shields)
+                    vidaPlayer.GanharShield(shieldAmount);
 
                 if (iceEffect)
                 {
@@ -141,6 +149,9 @@ public class ProjectileProperties : MonoBehaviour
         target.iceDuration = iceDuration;
         target.fireDamage = fireDamage;
         target.duracao = duracao;
-    }
+        target.healAmount= healAmount;
+        target.shields = shields;
+        target.shieldAmount = shieldAmount;
+}
 
 }

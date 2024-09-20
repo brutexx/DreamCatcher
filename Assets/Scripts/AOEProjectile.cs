@@ -12,6 +12,9 @@ public class AOEProjectile : MonoBehaviour
     public bool fireEffect = false;
     public bool iceEffect = false;
     public bool heals = false;
+    public bool shields = false;
+    public float healAmount = 5f;
+    public float shieldAmount = 5f;
     public bool lightEffect = false;
     public float duração = 0;
 

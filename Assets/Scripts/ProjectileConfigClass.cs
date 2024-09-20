@@ -6,6 +6,9 @@ public class ProjectileConfig
     public bool fireEffect = false;
     public bool iceEffect = false;
     public bool heals = false;
+    public bool shields = false;
+    public float healAmount = 5f;
+    public float shieldAmount = 5f;
     public bool lightEffect = false;
     public float slow = 0.2f;
     public float iceDuration = 3f;
@@ -29,6 +32,9 @@ public class ProjectileConfig
         this.fireDuration = config.fireDuration;
         this.aoe = config.aoe;
         this.self = config.self;
+        this.healAmount = config.healAmount;
+        this.shields = config.shields;
+        this.shieldAmount = config.shieldAmount;
     }
 
     // Construtor vazio para criar uma configura��o do zero

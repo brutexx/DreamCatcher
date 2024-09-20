@@ -30,7 +30,7 @@ public class VidaInimigo : MonoBehaviour
         }
     }
 
-    void Morrer()
+    public void Morrer()
     {
         // Aqui você pode adicionar efeitos de morte, como animação, partículas, etc.
         Destroy(gameObject);
