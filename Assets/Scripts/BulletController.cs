@@ -34,10 +34,8 @@ public class BulletController : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        // Colisão da bala com o chão não está sendo detectada
-        Debug.Log("teste");
         ContactPoint contact = collision.GetContact(0);
-        GameObject.Instantiate(bulletDecal, contact.point, Quaternion.LookRotation(contact.normal));
+        GameObject.Instantiate(bulletDecal, contact.point + contact.normal * .0001f, Quaternion.LookRotation(contact.normal));
         Destroy(gameObject);
     }
 }
