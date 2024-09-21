@@ -1,3 +1,5 @@
+using System;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -30,6 +32,10 @@ public class PlayerController : MonoBehaviour
     private InputAction moveAction;
     private InputAction jumpAction;
     private InputAction shootAction;
+    private InputAction switchAction;
+
+    public List<ProjectileConfig> shooterProperties = new List<ProjectileConfig>(); // Lista de propriedades
+    private int indexer = 0; // índice para selecionar as propriedades
 
     private void Awake()
     {
@@ -39,18 +45,30 @@ public class PlayerController : MonoBehaviour
         moveAction = playerInput.actions["Move"];
         jumpAction = playerInput.actions["Jump"];
         shootAction = playerInput.actions["Shoot"];
+        switchAction = playerInput.actions["Switch"];
     }
 
     private void OnEnable()
     {
         Cursor.lockState = CursorLockMode.Locked;
         shootAction.performed += _ => ShootGun();
+        switchAction.performed += ctx => SwitchGun(ctx.ReadValue<float>());
     }
 
     private void OnDisable()
     {
         Cursor.lockState = CursorLockMode.None;
-        shootAction.performed -= _ => ShootGun();
+    }
+
+    private void SwitchGun(float fdirection)
+    {
+        int direction = Mathf.RoundToInt(fdirection);
+        int count = shooterProperties.Count;
+
+        if (count != 0)
+        {
+            indexer = (indexer + direction + count) % count;
+        }
     }
 
     private void ShootGun()
@@ -58,6 +76,7 @@ public class PlayerController : MonoBehaviour
         RaycastHit hit;
         GameObject bullet = GameObject.Instantiate(bulletPrefab, barrelTransform.position, Quaternion.identity, bulletParent);
         BulletController bulletController = bullet.GetComponent<BulletController>();
+        ProjectileProperties bulletProperties = bullet.GetComponent<ProjectileProperties>();
 
         if (Physics.Raycast(cameraTransform.position, cameraTransform.forward, out hit, Mathf.Infinity))
         {
@@ -69,10 +88,18 @@ public class PlayerController : MonoBehaviour
             bulletController.target = cameraTransform.position + cameraTransform.forward * bulletHitMissDistance;
             bulletController.hit = false;
         }
+
+        // Aplica as propriedades do array de acordo com o índice atual
+        if (bulletProperties != null && shooterProperties.Count > 0)
+        {
+            ApplyProperties(bulletProperties, shooterProperties[indexer]);
+        }
     }
 
     void Update()
     {
+
+        // ------ Movimento ------ //
         groundedPlayer = controller.isGrounded;
         if (groundedPlayer && playerVelocity.y < 0)
         {
@@ -103,5 +130,28 @@ public class PlayerController : MonoBehaviour
         Quaternion targetRotation = Quaternion.Euler(0, cameraTransform.eulerAngles.y, 0);
         // Olha para a direção (com interpolação)
         transform.rotation = Quaternion.Lerp(transform.rotation, targetRotation, rotationSpeed * Time.deltaTime);
+    }
+
+    void ApplyProperties(ProjectileProperties target, ProjectileConfig source)
+    {
+        // Por enquanto "Speed" não está em ProjectileProperties, e sim em BulletController.
+        //target.projectileSpeed = source.projectileSpeed;
+        target.projectileDamage = source.projectileDamage;
+        target.fireEffect = source.fireEffect;
+        target.iceEffect = source.iceEffect;
+        target.heals = source.heals;
+        target.shields = source.shields;
+        target.slow = source.slow;
+        target.lightEffect = source.lightEffect;
+        target.iceDuration = source.iceDuration;
+        target.fireDamage = source.fireDamage;
+        target.fireDuration = source.fireDuration;
+        target.firstProperty = source.firstProperty;
+        target.delay = source.delay;
+        target.aoe = source.aoe;
+        target.self = source.self;
+        target.healAmount = source.healAmount;
+        target.shieldAmount = source.shieldAmount;
+        target.ChangeLight();
     }
 }

@@ -85,7 +85,7 @@ public class projectileSettings : MonoBehaviour
 
     public void CreateSettings()
     {
-        ProjectileShooter aux = player.GetComponent<ProjectileShooter>();
+        PlayerController aux = player.GetComponent<PlayerController>();
         if (aux != null)
         {
             // Cria uma c�pia das configura��es atuais

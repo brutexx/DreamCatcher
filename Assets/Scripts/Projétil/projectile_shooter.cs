@@ -1,3 +1,5 @@
+// AVISO: ESSE SCRIPT NÃO ESTÁ SENDO UTILIZADO!
+
 using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
