@@ -575,7 +575,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!108 &35003499
 Light:
   m_ObjectHideFlags: 0
@@ -2829,7 +2829,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 190695585138877083, guid: c4371522a097be64eaac20b89e9d7f24, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 11.650452
+      value: 12.321045
       objectReference: {fileID: 0}
     - target: {fileID: 190695585138877083, guid: c4371522a097be64eaac20b89e9d7f24, type: 3}
       propertyPath: m_LocalPosition.y
@@ -2837,7 +2837,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 190695585138877083, guid: c4371522a097be64eaac20b89e9d7f24, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -5.057251
+      value: -5.0512085
       objectReference: {fileID: 0}
     - target: {fileID: 190695585138877083, guid: c4371522a097be64eaac20b89e9d7f24, type: 3}
       propertyPath: m_LocalRotation.w
@@ -5543,6 +5543,7 @@ MonoBehaviour:
   barrelTransform: {fileID: 2013849447}
   bulletParent: {fileID: 706399248}
   bulletHitMissDistance: 25
+  shooterProperties: []
 --- !u!143 &437275885
 CharacterController:
   m_ObjectHideFlags: 0
@@ -14514,6 +14515,7 @@ GameObject:
   - component: {fileID: 1309491940}
   - component: {fileID: 1309491939}
   - component: {fileID: 1309491938}
+  - component: {fileID: 1309491942}
   m_Layer: 0
   m_Name: poste1
   m_TagString: Untagged
@@ -14610,6 +14612,19 @@ Transform:
   - {fileID: 35003500}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1309491942
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1309491937}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2615216cb10cdd94790d4eec5b490e39, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  killerLight: {fileID: 35003498}
 --- !u!1 &1338767652
 GameObject:
   m_ObjectHideFlags: 0
@@ -16522,7 +16537,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 190695585138877083, guid: c4371522a097be64eaac20b89e9d7f24, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 11.527161
+      value: 12.142273
       objectReference: {fileID: 0}
     - target: {fileID: 190695585138877083, guid: c4371522a097be64eaac20b89e9d7f24, type: 3}
       propertyPath: m_LocalPosition.y
@@ -16530,7 +16545,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 190695585138877083, guid: c4371522a097be64eaac20b89e9d7f24, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -3.689331
+      value: -3.6837158
       objectReference: {fileID: 0}
     - target: {fileID: 190695585138877083, guid: c4371522a097be64eaac20b89e9d7f24, type: 3}
       propertyPath: m_LocalRotation.w
@@ -17611,7 +17626,7 @@ Transform:
   m_GameObject: {fileID: 1556206805}
   serializedVersion: 2
   m_LocalRotation: {x: 0.15789793, y: -0.0044809147, z: 0.000716523, w: 0.98744506}
-  m_LocalPosition: {x: 11.650452, y: 4.42099, z: -5.057251}
+  m_LocalPosition: {x: 12.321045, y: 4.42099, z: -5.0512085}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []

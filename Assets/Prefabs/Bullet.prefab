@@ -213,8 +213,8 @@ MonoBehaviour:
   rb: {fileID: 0}
   projectileDamage: 5
   delay: 0.5
-  fireEffect: 0
-  iceEffect: 0
+  fireEffect: 1
+  iceEffect: 1
   heals: 0
   shields: 0
   healAmount: 5
