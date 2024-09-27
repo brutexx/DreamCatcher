@@ -214,7 +214,7 @@ MonoBehaviour:
   projectileDamage: 5
   delay: 0.5
   fireEffect: 1
-  iceEffect: 1
+  iceEffect: 0
   heals: 0
   shields: 0
   healAmount: 5
@@ -222,7 +222,7 @@ MonoBehaviour:
   lightEffect: 0
   light: {fileID: 0}
   aoe: 0
-  self: 0
+  self: 1
   slow: 0.2
   iceDuration: 3
   fireDamage: 0.2

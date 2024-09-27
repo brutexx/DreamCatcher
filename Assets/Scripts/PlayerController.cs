@@ -94,6 +94,9 @@ public class PlayerController : MonoBehaviour
         {
             ApplyProperties(bulletProperties, shooterProperties[indexer]);
         }
+
+        if (bulletProperties.self)
+            bulletProperties.ShootSelf(gameObject);
     }
 
     void Update()

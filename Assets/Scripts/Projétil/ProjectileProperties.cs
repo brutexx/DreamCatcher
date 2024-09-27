@@ -59,33 +59,36 @@ public class ProjectileProperties : MonoBehaviour
                 light.color = Color.grey;
         }
     }
-
-    void OnTriggerEnter(Collider other)
+   
+    public void ShootSelf (GameObject player)
     {
-        if (self && other.CompareTag("Player"))
+        VidaPlayer vidaPlayer = player.GetComponent<VidaPlayer>();
+        if (vidaPlayer != null)
         {
-            VidaPlayer vidaPlayer = other.GetComponent<VidaPlayer>();
-            if (vidaPlayer != null)
+            if (!heals && !shields)
+                vidaPlayer.TomarDano(projectileDamage);
+            if (heals)
+                vidaPlayer.GanharVida(healAmount);
+            if (shields)
+                vidaPlayer.GanharShield(shieldAmount);
+
+            if (iceEffect)
             {
-                if(!heals && !shields)
-                    vidaPlayer.TomarDano(projectileDamage);
-                if(heals)
-                    vidaPlayer.GanharVida(healAmount);
-                if (shields)
-                    vidaPlayer.GanharShield(shieldAmount);
-
-                if (iceEffect)
-                {
-                    vidaPlayer.AplicarLentidao(slow, iceDuration);
-                }
-
-                if (fireEffect)
-                {
-                    vidaPlayer.AplicarDanoAoLongoDoTempo(fireDamage, fireDuration);
-                }
+                vidaPlayer.AplicarLentidao(slow, iceDuration);
             }
-            Destroy(gameObject);
+
+            if (fireEffect)
+            {
+                vidaPlayer.AplicarDanoAoLongoDoTempo(fireDamage, fireDuration);
+            }
         }
+        Destroy(gameObject);
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        GameObject other = collision.gameObject;
+        
         if (!aoe && other.CompareTag("Enemy"))
         {
             VidaInimigo vidaInimigo = other.GetComponent<VidaInimigo>();
