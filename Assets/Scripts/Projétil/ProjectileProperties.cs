@@ -38,6 +38,8 @@ public class ProjectileProperties : MonoBehaviour
 
     public GameObject aoeAreaPrefab;
 
+    public GameObject lightPrefab;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -112,6 +114,18 @@ public class ProjectileProperties : MonoBehaviour
         if (aoe && !other.CompareTag("Player"))
         {
             Explode();
+        }
+
+        if (!other.CompareTag("Player") && !other.CompareTag("Air") && !other.CompareTag("Enemy") || aoe)
+        {
+            GameObject aux =  Instantiate(lightPrefab, transform.position, transform.rotation);
+            Light auxLight =  aux.GetComponent<Light>();
+            if (firstProperty == 1)
+                auxLight.color = Color.red;
+            else if (firstProperty == 2)
+                auxLight.color = Color.blue;
+            else
+                auxLight.color = Color.white;
         }
 
 

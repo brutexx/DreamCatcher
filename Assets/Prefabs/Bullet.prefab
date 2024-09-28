@@ -231,6 +231,7 @@ MonoBehaviour:
   duracao: 3
   radius: 5
   aoeAreaPrefab: {fileID: 9006251315264432247, guid: 51f5f2a7233a77045a2bfd6cd11343f6, type: 3}
+  lightPrefab: {fileID: 6002098712422315596, guid: 3fb3979773d63cb4ba53dca48bb4c2d5, type: 3}
 --- !u!114 &7319332399971799015
 MonoBehaviour:
   m_ObjectHideFlags: 0
