@@ -44,7 +44,10 @@ public class PlayerController : MonoBehaviour
     private InputAction switchAction;
 
     private Animator animator;
+
     int jumpAnimation;
+    int recoilAnimation;
+    
     int moveXAnimationParameterId;
     int moveZAnimationParameterId;
 
@@ -67,6 +70,7 @@ public class PlayerController : MonoBehaviour
         // Animations
         animator = GetComponent<Animator>();
         jumpAnimation = Animator.StringToHash("Pistol Jump");
+        recoilAnimation = Animator.StringToHash("Pistol Recoil");
         moveXAnimationParameterId = Animator.StringToHash("MoveX");
         moveZAnimationParameterId = Animator.StringToHash("MoveZ");
     }
@@ -120,6 +124,8 @@ public class PlayerController : MonoBehaviour
 
         if (bulletProperties.self)
             bulletProperties.ShootSelf(gameObject);
+
+        animator.CrossFade(recoilAnimation, animationPlayTransition);
     }
 
     void Update()

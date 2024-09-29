@@ -14047,8 +14047,8 @@ MonoBehaviour:
         transform: {fileID: 0}
         weight: 0
     m_Offset: {x: 0, y: 0, z: 0}
-    m_MinLimit: -180
-    m_MaxLimit: 180
+    m_MinLimit: -131
+    m_MaxLimit: 84
     m_AimAxis: 4
     m_UpAxis: 2
     m_WorldUpType: 1
@@ -24622,8 +24622,8 @@ MonoBehaviour:
         transform: {fileID: 0}
         weight: 0
     m_Offset: {x: 0, y: 0, z: 0}
-    m_MinLimit: -180
-    m_MaxLimit: 180
+    m_MinLimit: -131
+    m_MaxLimit: 84
     m_AimAxis: 4
     m_UpAxis: 2
     m_WorldUpType: 1
