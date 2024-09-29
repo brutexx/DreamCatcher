@@ -23,6 +23,15 @@ public class PlayerController : MonoBehaviour
     [SerializeField]
     private float bulletHitMissDistance = 25f;
 
+    [SerializeField]
+    private float animationSmoothTime = 0.1f;
+    [SerializeField]
+    private float animationPlayTransition = 0.15f;
+    [SerializeField]
+    private Transform aimTarget;
+    [SerializeField]
+    private float aimDistance = 1f;
+
     private CharacterController controller;
     private PlayerInput playerInput;
     private Vector3 playerVelocity;
@@ -34,6 +43,14 @@ public class PlayerController : MonoBehaviour
     private InputAction shootAction;
     private InputAction switchAction;
 
+    private Animator animator;
+    int jumpAnimation;
+    int moveXAnimationParameterId;
+    int moveZAnimationParameterId;
+
+    Vector2 currentAnimationBlendVector;
+    Vector2 animationVelocity;
+
     public List<ProjectileConfig> shooterProperties = new List<ProjectileConfig>(); // Lista de propriedades
     private int indexer = 0; // índice para selecionar as propriedades
 
@@ -42,10 +59,16 @@ public class PlayerController : MonoBehaviour
         controller = GetComponent<CharacterController>();
         playerInput = GetComponent<PlayerInput>();
         cameraTransform = Camera.main.transform;
+        // Cache a reference to all of the input actions to avoid them with strings constantly.
         moveAction = playerInput.actions["Move"];
         jumpAction = playerInput.actions["Jump"];
         shootAction = playerInput.actions["Shoot"];
         switchAction = playerInput.actions["Switch"];
+        // Animations
+        animator = GetComponent<Animator>();
+        jumpAnimation = Animator.StringToHash("Pistol Jump");
+        moveXAnimationParameterId = Animator.StringToHash("MoveX");
+        moveZAnimationParameterId = Animator.StringToHash("MoveZ");
     }
 
     private void OnEnable()
@@ -101,6 +124,8 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
+        // ------ Encarar ------ //
+        aimTarget.position = cameraTransform.position + cameraTransform.forward * aimDistance;
 
         // ------ Movimento ------ //
         groundedPlayer = controller.isGrounded;
@@ -111,17 +136,22 @@ public class PlayerController : MonoBehaviour
 
         // Pega os inputs de movimento do jogador
         Vector2 input = moveAction.ReadValue<Vector2>();
-        Vector3 move = new Vector3(input.x, 0, input.y);
+        currentAnimationBlendVector = Vector2.SmoothDamp(currentAnimationBlendVector, input, ref animationVelocity, animationSmoothTime);
+        Vector3 move = new Vector3(currentAnimationBlendVector.x, 0, currentAnimationBlendVector.y);
         // Saber qual direção é "para frente"
         move = move.x * cameraTransform.right.normalized + move.z * cameraTransform.forward.normalized;
         move.y = 0f;
         // Move o jogador
         controller.Move(move * Time.deltaTime * playerSpeed);
+        // Blend Strafe Animation
+        animator.SetFloat(moveXAnimationParameterId, currentAnimationBlendVector.x);
+        animator.SetFloat(moveZAnimationParameterId, currentAnimationBlendVector.y);
 
-        // Changes the height position of the player..
+        // Changes the height position of the player.
         if (jumpAction.triggered && groundedPlayer)
         {
             playerVelocity.y += Mathf.Sqrt(jumpHeight * -3.0f * gravityValue);
+            animator.CrossFade(jumpAnimation, animationPlayTransition);
         }
 
         playerVelocity.y += gravityValue * Time.deltaTime;
