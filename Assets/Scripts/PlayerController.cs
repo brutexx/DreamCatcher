@@ -32,6 +32,8 @@ public class PlayerController : MonoBehaviour
     [SerializeField]
     private float aimDistance = 1f;
 
+    private LayerMask canBeHit;
+
     private CharacterController controller;
     private PlayerInput playerInput;
     private Vector3 playerVelocity;
@@ -62,6 +64,7 @@ public class PlayerController : MonoBehaviour
         controller = GetComponent<CharacterController>();
         playerInput = GetComponent<PlayerInput>();
         cameraTransform = Camera.main.transform;
+        canBeHit = ~LayerMask.GetMask("Player");
         // Cache a reference to all of the input actions to avoid them with strings constantly.
         moveAction = playerInput.actions["Move"];
         jumpAction = playerInput.actions["Jump"];
@@ -105,7 +108,7 @@ public class PlayerController : MonoBehaviour
         BulletController bulletController = bullet.GetComponent<BulletController>();
         ProjectileProperties bulletProperties = bullet.GetComponent<ProjectileProperties>();
 
-        if (Physics.Raycast(cameraTransform.position, cameraTransform.forward, out hit, Mathf.Infinity))
+        if (Physics.Raycast(cameraTransform.position, cameraTransform.forward, out hit, Mathf.Infinity, canBeHit))
         {
             bulletController.target = hit.point;
             bulletController.hit = true;

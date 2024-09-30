@@ -12,13 +12,23 @@ public class Enemy : MonoBehaviour
     public float velocidade = 2.0f;
 
     public NavMeshAgent enemy;
-    public Transform player;
+    private Transform player;
 
     [SerializeField]
     private Animator animator;
 
     private void Start()
     {
+        // Get the player
+        GameObject playerObject = GameObject.FindGameObjectWithTag("Player");
+        if (playerObject != null)
+        {
+            player = playerObject.transform;
+        }
+        else
+        {
+            Debug.LogError("Player not found!");
+        }
         // Get the Animator component attached to the enemy GameObject
         animator = GetComponent<Animator>();
         // Set the NavMeshAgent's speed to the specified 'velocidade'
