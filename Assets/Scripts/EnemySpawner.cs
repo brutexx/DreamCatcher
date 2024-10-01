@@ -6,6 +6,8 @@ public class EnemySpawner : MonoBehaviour
 {
     [SerializeField]
     private GameObject enemyPrefab;
+    [SerializeField]
+    private PosteManager posteManager;
 
     [SerializeField]
     private float minimumSpawnTime;
@@ -15,6 +17,8 @@ public class EnemySpawner : MonoBehaviour
     [SerializeField]
     private float spawnTime;
 
+    int qtdPostesLigados = 0;
+
     private void Awake()
     {
         SetSpawnTime();
@@ -23,6 +27,8 @@ public class EnemySpawner : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        qtdPostesLigados = posteManager.qtdPostesLigados();
+
         spawnTime -= Time.deltaTime;
 
         if (spawnTime <= 0)
@@ -34,6 +40,6 @@ public class EnemySpawner : MonoBehaviour
 
     private void SetSpawnTime()
     {
-        spawnTime = Random.Range(minimumSpawnTime, maximumSpawnTime);
+        spawnTime = Random.Range(minimumSpawnTime - qtdPostesLigados, maximumSpawnTime - qtdPostesLigados);
     }
 }

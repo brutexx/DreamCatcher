@@ -10,17 +10,7 @@ public class PainelControleer : MonoBehaviour
     private List<GameObject> buttons = new List<GameObject>();
     public GameObject buttonPrefab; // Prefab do botão a ser instanciado
     public Canvas canvas; // Referência ao Canvas onde o botão será exibido
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 
     public void ShowProjectile()
     {

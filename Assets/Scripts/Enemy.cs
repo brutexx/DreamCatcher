@@ -9,21 +9,30 @@ public class Enemy : MonoBehaviour
     //public Transform[] pontosDePatrulha;
     //private int pontoAtual = 0;
 
+    [Header("Movement Settings")]
     public float velocidade = 2.0f;
-
     public NavMeshAgent enemy;
-    private Transform player;
+
+    [Header("Attack Settings")]
+    public int damageAmount = 10;         // Damage per attack
+    public float attackRate = 1.0f;       // Time between attacks in seconds
+    private float lastAttackTime = 0f;    // Timestamp of the last attack
+
+    private GameObject playerObject;
+    private Transform playerTransform;
+    private VidaPlayer playerHealth;
 
     [SerializeField]
     private Animator animator;
 
     private void Start()
     {
-        // Get the player
-        GameObject playerObject = GameObject.FindGameObjectWithTag("Player");
+        // Get the playerTransform
+        playerObject = GameObject.FindGameObjectWithTag("Player");
+        
         if (playerObject != null)
         {
-            player = playerObject.transform;
+            playerTransform = playerObject.transform;
         }
         else
         {
@@ -37,8 +46,32 @@ public class Enemy : MonoBehaviour
 
     void Update()
     {
-        enemy.SetDestination(player.position);  
+        enemy.SetDestination(playerTransform.position);  
 
+        // Attack the playerTransform
+        float distanceToPlayer = Vector3.Distance(transform.position, playerTransform.position);
+
+        // Continue moving towards the playerTransform
+        enemy.SetDestination(playerTransform.position);
+
+        // Handle movement animations
+        HandleMovementAnimations();
+    }
+
+    private void OnCollisionStay(Collision collision)
+    {
+        GameObject other = collision.gameObject;
+
+        if (other.CompareTag("Player"))
+        {
+            playerHealth = other.GetComponent<VidaPlayer>();
+            // Handle attack
+            AttemptAttack();
+        }
+    }
+
+    private void HandleMovementAnimations ()
+    {
         // Get the current velocity of the NavMeshAgent
         Vector3 velocity = enemy.velocity;
 
@@ -48,6 +81,33 @@ public class Enemy : MonoBehaviour
         // Set Animator parameters based on movement direction
         animator.SetFloat("MoveX", localDirection.x);
         animator.SetFloat("MoveZ", localDirection.z);
+    }
+
+    // Method to attempt an attack
+    private void AttemptAttack()
+    {
+        // Check if enough time has passed since the last attack
+        if (Time.time - lastAttackTime >= attackRate)
+        {
+            Attack();
+            lastAttackTime = Time.time;
+        }
+
+        // Optionally, handle attack animations
+        if (animator != null)
+        {
+            animator.SetTrigger("Attack");  // Ensure you have an "Attack" trigger in the Animator
+        }
+    }
+
+    private void Attack()
+    {
+        if (playerHealth != null)
+        {
+            playerHealth.TomarDano(damageAmount);
+        }
+
+        animator.CrossFade(Animator.StringToHash("Jump"), 0.1f);
     }
 
     // Caso em algum momentos quisermos usar de patrulha

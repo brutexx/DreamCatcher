@@ -102,7 +102,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   velocidade: 5
   enemy: {fileID: 8583231762834730418}
-  player: {fileID: 0}
+  attackRange: 5
+  damageAmount: 10
+  attackRate: 1
   animator: {fileID: 8527889282503912170}
 --- !u!114 &5243054062881236849
 MonoBehaviour:

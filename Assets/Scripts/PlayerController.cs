@@ -64,7 +64,7 @@ public class PlayerController : MonoBehaviour
         controller = GetComponent<CharacterController>();
         playerInput = GetComponent<PlayerInput>();
         cameraTransform = Camera.main.transform;
-        canBeHit = ~LayerMask.GetMask("Player");
+        canBeHit = ~LayerMask.GetMask("Player", "Air");
         // Cache a reference to all of the input actions to avoid them with strings constantly.
         moveAction = playerInput.actions["Move"];
         jumpAction = playerInput.actions["Jump"];

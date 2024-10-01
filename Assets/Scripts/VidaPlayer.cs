@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class VidaPlayer : MonoBehaviour
 {
@@ -56,8 +57,7 @@ public class VidaPlayer : MonoBehaviour
 
     void Morrer()
     {
-        // Aqui você pode adicionar efeitos de morte, como animação, partículas, etc.
-       
+        SceneManager.LoadScene("GameOver"); // Switch to "Victory" scene
     }
 
     public void AplicarLentidao(float porcentagemReducao, float duracao)

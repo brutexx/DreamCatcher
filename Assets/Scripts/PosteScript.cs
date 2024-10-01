@@ -4,12 +4,9 @@ using UnityEngine;
 
 public class PosteScript : MonoBehaviour
 {
+    public PosteManager posteManagerScript;
     public GameObject killerLight;
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+
 
     // Update is called once per frame
     void Update()
@@ -20,7 +17,9 @@ public class PosteScript : MonoBehaviour
             // Verifica se o player está dentro do trigger usando uma flag
             if (isPlayerInTrigger)
             {
-                killerLight.SetActive(true);
+                killerLight.SetActive(true); // Activates the light
+                posteManagerScript.posteLigado();
+                this.enabled = false; // Disables this script
             }
         }
     }

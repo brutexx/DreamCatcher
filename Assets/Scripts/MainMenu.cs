@@ -5,11 +5,13 @@ using UnityEngine.SceneManagement;
 
 public class MainMenu : MonoBehaviour
 {
+    public string nome;
+
     // Start is called before the first frame update
     public void StartGame()
     {
         // Carrega a próxima cena (certifique-se de configurar as cenas no Build Settings)
-        SceneManager.LoadScene("Sample");
+        SceneManager.LoadScene(nome);
     }
 
     // Função chamada ao clicar no botão "Exit"
